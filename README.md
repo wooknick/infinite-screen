@@ -13,4 +13,4 @@ Infinite Screen Playground
 
 ## Live Demos
 
-[Play it](https://github.com/wooknick/infinite-screen/)
+[Play it](https://wooknick.github.io/infinite-screen/)
