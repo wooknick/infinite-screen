@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 import Konva from "konva";
 import queryString from "query-string";
 import axios from "axios";
@@ -92,25 +93,29 @@ class App {
 
   async getVideoInfo(videoId) {
     const url = "https://www.googleapis.com/youtube/v3/videos";
-    const {
-      data: { items },
-    } = await axios(url, {
-      method: "GET",
-      params: {
-        key: process.env.YOUTUBE_API_KEY,
-        id: videoId,
-        part: "snippet",
-      },
-    });
+    try {
+      const {
+        data: { items },
+      } = await axios(url, {
+        method: "GET",
+        params: {
+          key: process.env.YOUTUBE_API_KEY,
+          id: videoId,
+          part: "snippet",
+        },
+      });
 
-    const result = items[0];
+      const result = items[0];
 
-    const videoInfo = {
-      title: result.snippet.title,
-      thumbnails: result.snippet.thumbnails,
-    };
+      const videoInfo = {
+        title: result.snippet.title,
+        thumbnails: result.snippet.thumbnails,
+      };
 
-    return videoInfo;
+      return videoInfo;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   setState(newState) {
