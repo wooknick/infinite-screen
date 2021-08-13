@@ -5,6 +5,54 @@ import axios from "axios";
 
 import "./style.scss";
 
+const PRESET = [
+  {
+    x: 969.3520254794569,
+    y: 25.093357245083354,
+    width: 303.20949853195583,
+    height: 227.407123898967,
+    rotation: 27.74115699928264,
+    src: "https://i.ytimg.com/vi/rA432tUuUCU/hqdefault.jpg",
+    videoId: "rA432tUuUCU",
+  },
+  {
+    x: 410.7989722153756,
+    y: 234.92827780161596,
+    width: 479.9999999999988,
+    height: 359.99999999999943,
+    rotation: -18.19251396717102,
+    src: "https://i.ytimg.com/vi/0xSFPome3Tc/hqdefault.jpg",
+    videoId: "0xSFPome3Tc",
+  },
+  {
+    x: -266.87077279458765,
+    y: -196.78891967264659,
+    width: 782.962372693093,
+    height: 587.2217795198205,
+    rotation: 5.137223737414499,
+    src: "https://i.ytimg.com/vi/3pELV5WLTQQ/hqdefault.jpg",
+    videoId: "3pELV5WLTQQ",
+  },
+  {
+    x: 825.0233486599329,
+    y: 376.57651823665475,
+    width: 841.6829054770042,
+    height: 631.2621791077548,
+    rotation: -10.194236993212236,
+    src: "https://i.ytimg.com/vi/rgMpCGCBZLo/hqdefault.jpg",
+    videoId: "rgMpCGCBZLo",
+  },
+  {
+    x: 20.628365320341388,
+    y: 525.2824806178924,
+    width: 479.99999999999915,
+    height: 359.99999999999955,
+    rotation: -5.622636787237308,
+    src: "https://i.ytimg.com/vi/MHLTyAHZnRM/hqdefault.jpg",
+    videoId: "MHLTyAHZnRM",
+  },
+];
+
 class App {
   constructor() {
     // DOM Element
@@ -13,6 +61,7 @@ class App {
     this.viewer = document.getElementById("viewer");
     this.addYoutubeBtn = document.getElementById("addYoutube");
     this.youtubeId = document.getElementById("youtubeId");
+    this.presetBtn = document.getElementById("preset");
 
     // Settings
     this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
@@ -197,6 +246,9 @@ class App {
       "click",
       this.findYoutube.bind(this, 120, 120)
     );
+    this.presetBtn.addEventListener("click", () => {
+      this.setState(PRESET);
+    });
     this.stage.on("wheel", (e) => {
       if (e.evt.metaKey) {
         this.zoom(e);
